@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const HomeBanner = () => {
     return ( <div className="relative bg-gradient-to-r from-sky-500 mb-8">
         <div className="mx-auto px-8 py-12 flex flex-col gap-2 md:flex-row items-center justify-evenly">
@@ -7,7 +9,7 @@ const HomeBanner = () => {
                 <p className="text-2xl md:text-5xl text-yellow-400 font-bold">GET 50% OFF</p>
             </div>
             <div className="w-1/3 relative aspect-video">
-                
+                <Image src='/banner-image' alt="Banner Image" fill className="object-contain"/>
             </div>
         </div>
 
