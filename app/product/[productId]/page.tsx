@@ -3,12 +3,14 @@ import ProductDetails from "./ProductDetils";
 import { product } from "@/utils/product";
 import ListRating from "@/app/components/products/ListRating";
 import { products } from "@/utils/products";
+import getProductById from "@/actions/getProductByid";
 
-interface IPrams{
-    productId?:string;
+interface IParams{
+    productId:string
 }
-const Product = ({params}:{params:IPrams}) => {
-   const product=products.find((item)=>item.id===params.productId)
+const Product = async({params}:{params:IParams}) => {
+   const product=await getProductById(params)
+   if(!product) return null
    return ( <div className="p-8">
         <Container>
             <ProductDetails product={product}/>

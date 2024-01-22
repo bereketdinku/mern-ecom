@@ -1,6 +1,9 @@
 "use client"
 
+import { formatPrice } from "@/utils/formatPrice";
+import { truncateText } from "@/utils/truncateText";
 import { CartProductType } from "@prisma/client";
+import { truncate } from "fs";
 import Image from "next/image";
 
 interface OrderItemProps{
@@ -12,7 +15,20 @@ const OrderItem:React.FC<OrderItemProps> = ({item}) => {
             <div className="relative w-[70px] aspect-square">
                 <Image src={item.selectedImg.image} alt="" fill className="object-contain"/>
             </div>
+            <div className="flex flex-col gap-1">
+                <div>{truncateText(item.name)}</div>
+                <div>{item.selectedImg.color}</div>
+            </div>
         </div>
+        <div className="justify-self-center">
+            {formatPrice(item.price)}
+
+        </div>
+        <div className="justify-self-center">
+            {item.quantity}
+
+        </div>
+        <div className="justify-self-end font-semibold">{(item.price * item.quantity).toFixed(2)}</div>
     </div> );
 }
  
