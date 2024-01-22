@@ -1,6 +1,6 @@
 import prisma from '@/libs/prismadb'
 interface IParams{
-    productId:string
+    productId?:string
 }
 export default async function getProductById(params:IParams){
     try {
@@ -23,6 +23,7 @@ export default async function getProductById(params:IParams){
         if(!product){
             return null;
         }
+        return product
     } catch (error:any) {
        throw new Error(error) 
     }
