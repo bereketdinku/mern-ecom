@@ -82,7 +82,7 @@ export const CartContextProvider = (props: Props) => {
           return item.id !== product.id;
         });
         setCartProducts(filteredProducts);
-        toast.success("product added to cart");
+        toast.success("product  remove cart");
         localStorage.setItem(
           "eShopCartItems",
           JSON.stringify(filteredProducts)
