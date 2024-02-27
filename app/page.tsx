@@ -6,8 +6,8 @@ import NullData from "./components/NullData";
 interface HomeProps {
   searchParams: IProductParams;
 }
-export default async function Home() {
-  const products = await getProducts({ category: null });
+export default async function Home({ searchParams }: HomeProps) {
+  const products = await getProducts(searchParams);
   if (products.length === 0) {
     return (
       <NullData title='Oops! No products found. Click "All" to clear filters' />
