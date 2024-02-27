@@ -7,7 +7,10 @@ interface HomeProps {
   searchParams: IProductParams;
 }
 export default async function Home({ searchParams }: HomeProps) {
-  const products = await getProducts(searchParams);
+  const products = await getProducts({
+    category: searchParams.category,
+    searchTerm: searchParams.searchTerm,
+  });
   if (products.length === 0) {
     return (
       <NullData title='Oops! No products found. Click "All" to clear filters' />
